@@ -1,0 +1,310 @@
+prompt --application/pages/page_00026
+begin
+--   Manifest
+--     PAGE: 00026
+--   Manifest End
+wwv_flow_api.component_begin (
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.0'
+,p_default_workspace_id=>34634934084303539451
+,p_default_application_id=>52319
+,p_default_id_offset=>0
+,p_default_owner=>'WKSP_PROJETSIENSIAS'
+);
+wwv_flow_api.create_page(
+ p_id=>26
+,p_user_interface_id=>wwv_flow_api.id(39202103933069874424)
+,p_name=>unistr('Ajouter une \00E9cole')
+,p_alias=>'ECOLES'
+,p_page_mode=>'MODAL'
+,p_step_title=>unistr('Ajouter une \00E9cole')
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_dialog_chained=>'N'
+,p_protection_level=>'C'
+,p_last_updated_by=>'K.GOURAI14@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20220217045207'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(39338801991362347948)
+,p_plug_name=>unistr('Ajouter une \00E9cole')
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(39201952262334874365)
+,p_plug_display_sequence=>10
+,p_query_type=>'SQL'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'select E.*, A.ID_ANNEE',
+'from ECOLE E, ANNEE_ACADEMIQUE A',
+'where E.ID_ECOLE = :P26_ID_ECOLE and A.ID_ANNEE = :P26_ID_ANNEE'))
+,p_is_editable=>true
+,p_edit_operations=>'i:u:d'
+,p_lost_update_check_type=>'VALUES'
+,p_plug_source_type=>'NATIVE_FORM'
+,p_plug_query_options=>'DERIVED_REPORT_COLUMNS'
+);
+wwv_flow_api.create_page_plug(
+ p_id=>wwv_flow_api.id(39338803668812347949)
+,p_plug_name=>'Boutons'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_api.id(39201955043612874366)
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'REGION_POSITION_03'
+,p_attribute_01=>'N'
+,p_attribute_02=>'TEXT'
+,p_attribute_03=>'Y'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(39338804037866347949)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_api.id(39338803668812347949)
+,p_button_name=>'CANCEL'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(39202079248974874413)
+,p_button_image_alt=>'Annuler'
+,p_button_position=>'CLOSE'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(39338805419627347950)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_api.id(39338803668812347949)
+,p_button_name=>'DELETE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#:t-Button--danger:t-Button--simple'
+,p_button_template_id=>wwv_flow_api.id(39202079248974874413)
+,p_button_image_alt=>'Supprimer'
+,p_button_position=>'DELETE'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'&APP_TEXT$DELETE_MSG!RAW.'
+,p_confirm_style=>'danger'
+,p_button_condition=>'P26_ID_ECOLE'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_database_action=>'DELETE'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(39338805809100347950)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_api.id(39338803668812347949)
+,p_button_name=>'SAVE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(39202079248974874413)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Appliquer les modifications'
+,p_button_position=>'NEXT'
+,p_button_condition=>'P26_ID_ECOLE'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_database_action=>'UPDATE'
+);
+wwv_flow_api.create_page_button(
+ p_id=>wwv_flow_api.id(39338806271295347950)
+,p_button_sequence=>40
+,p_button_plug_id=>wwv_flow_api.id(39338803668812347949)
+,p_button_name=>'CREATE'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_api.id(39202079248974874413)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>unistr('Cr\00E9er')
+,p_button_position=>'NEXT'
+,p_warn_on_unsaved_changes=>null
+,p_button_condition=>'P26_ID_ECOLE'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_database_action=>'INSERT'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(39338802656009347948)
+,p_name=>'P26_ID_ECOLE'
+,p_source_data_type=>'NUMBER'
+,p_is_primary_key=>true
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_item_source_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_source=>'ID_ECOLE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_is_persistent=>'N'
+,p_protection_level=>'S'
+,p_attribute_01=>'Y'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(40284768490798772433)
+,p_name=>'P26_NOM_ECOLE'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_item_source_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_prompt=>'Nom'
+,p_source=>'NOM_ECOLE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>1020
+,p_field_template=>wwv_flow_api.id(39202076734350874412)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(40284768569605772434)
+,p_name=>'P26_PAYS_ECOLE'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_item_source_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_prompt=>'Pays'
+,p_source=>'PAYS_ECOLE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>120
+,p_field_template=>wwv_flow_api.id(39202076734350874412)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(40284768631934772435)
+,p_name=>'P26_VILLE_ECOLE'
+,p_source_data_type=>'VARCHAR2'
+,p_is_required=>true
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_item_source_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_prompt=>'Ville'
+,p_source=>'VILLE_ECOLE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_TEXT_FIELD'
+,p_cSize=>30
+,p_cMaxlength=>120
+,p_field_template=>wwv_flow_api.id(39202076734350874412)
+,p_item_template_options=>'#DEFAULT#'
+,p_is_persistent=>'N'
+,p_attribute_01=>'N'
+,p_attribute_02=>'N'
+,p_attribute_04=>'TEXT'
+,p_attribute_05=>'BOTH'
+);
+wwv_flow_api.create_page_item(
+ p_id=>wwv_flow_api.id(40284768755988772436)
+,p_name=>'P26_ID_ANNEE'
+,p_source_data_type=>'NUMBER'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_item_source_plug_id=>wwv_flow_api.id(39338801991362347948)
+,p_source=>'ID_ANNEE'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_is_persistent=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(39338804128522347949)
+,p_name=>'Cancel Dialog'
+,p_event_sequence=>10
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(39338804037866347949)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(39338804965274347950)
+,p_event_id=>wwv_flow_api.id(39338804128522347949)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_DIALOG_CANCEL'
+);
+wwv_flow_api.create_page_da_event(
+ p_id=>wwv_flow_api.id(40284768814588772437)
+,p_name=>'create ecole'
+,p_event_sequence=>20
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_api.id(39338806271295347950)
+,p_bind_type=>'bind'
+,p_bind_event_type=>'click'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(40284768979692772438)
+,p_event_id=>wwv_flow_api.id(40284768814588772437)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'declare',
+'v_id_ecole ECOLE.ID_ECOLE%TYPE;',
+'begin',
+'insert into ECOLE (NOM_ECOLE,',
+'                    PAYS_ECOLE,',
+'                    VILLE_ECOLE) VALUES (:P26_NOM_ECOLE,',
+'                                        :P26_PAYS_ECOLE,',
+'                                        :P26_VILLE_ECOLE) ',
+'        returning ID_ECOLE into v_id_ecole;',
+'insert into ANNEE_AVOIR_ECOLE (ID_ECOLE_AVOIR, ID_ANNEE_AVOIR) VALUES (v_id_ecole, :P26_ID_ANNEE);',
+'end;'))
+,p_attribute_02=>'P26_ID_ECOLE,P26_NOM_ECOLE,P26_PAYS_ECOLE,P26_VILLE_ECOLE,P26_ID_ANNEE'
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(40284769072049772439)
+,p_event_id=>wwv_flow_api.id(40284768814588772437)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_DIALOG_CLOSE'
+);
+wwv_flow_api.create_page_da_action(
+ p_id=>wwv_flow_api.id(40284769187444772440)
+,p_event_id=>wwv_flow_api.id(40284768814588772437)
+,p_event_result=>'TRUE'
+,p_action_sequence=>30
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_SUBMIT_PAGE'
+,p_attribute_02=>'Y'
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(39338807095459347951)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_api.id(39338801991362347948)
+,p_process_type=>'NATIVE_FORM_DML'
+,p_process_name=>'Traiter le panneau Ecoles'
+,p_attribute_01=>'REGION_SOURCE'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'Y'
+,p_attribute_08=>'Y'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(39338807489413347951)
+,p_process_sequence=>50
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>unistr('Fermer la bo\00EEte de dialogue')
+,p_attribute_01=>'REQUEST'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>'CREATE,SAVE,DELETE'
+,p_process_when_type=>'REQUEST_IN_CONDITION'
+);
+wwv_flow_api.create_page_process(
+ p_id=>wwv_flow_api.id(39338806621044347950)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_region_id=>wwv_flow_api.id(39338801991362347948)
+,p_process_type=>'NATIVE_FORM_INIT'
+,p_process_name=>'Initialiser le panneau Ecoles'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+);
+wwv_flow_api.component_end;
+end;
+/

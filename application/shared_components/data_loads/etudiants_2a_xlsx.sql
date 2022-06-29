@@ -1,0 +1,123 @@
+prompt --application/shared_components/data_loads/etudiants_2a_xlsx
+begin
+--   Manifest
+--     DATA LOAD: ETUDIANTS_2A_XLSX
+--   Manifest End
+wwv_flow_api.component_begin (
+ p_version_yyyy_mm_dd=>'2021.10.15'
+,p_release=>'21.2.0'
+,p_default_workspace_id=>34634934084303539451
+,p_default_application_id=>52319
+,p_default_id_offset=>0
+,p_default_owner=>'WKSP_PROJETSIENSIAS'
+);
+wwv_flow_api.create_data_profile(
+ p_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'ETUDIANTS_2A_XLSX'
+,p_format=>'XLSX'
+,p_encoding=>'utf-8'
+,p_default_xlsx_sheet_name=>'sheet1.xml'
+,p_has_header_row=>true
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296499792647791395)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'NOM_ETUDIANT_FICHIER'
+,p_sequence=>1
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'NOM_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296500003353791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'PRENOM_ETUDIANT_FICHIER'
+,p_sequence=>2
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'PRENOM_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296500387882791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'EMAIL_ETUDIANT_FICHIER'
+,p_sequence=>3
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'EMAIL_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296500627648791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'CIN_ETUDIANT_FICHIER'
+,p_sequence=>4
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'CIN_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296500912871791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'CNE_ETUDIANT_FICHIER'
+,p_sequence=>5
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'CNE_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296501262049791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'CODE_APOGEE_ETUDIANT_FICHIER'
+,p_sequence=>6
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'CODE_APOGEE_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296501532731791396)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'MOYENNE_ETUDIANT_FICHIER'
+,p_sequence=>7
+,p_column_type=>'DATA'
+,p_data_type=>'NUMBER'
+,p_selector_type=>'NAME'
+,p_selector=>'MOYENNE_ETUDIANT'
+);
+wwv_flow_api.create_data_profile_col(
+ p_id=>wwv_flow_api.id(40296501888898791397)
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_name=>'FILIERE_ETUDIANT_FICHIER'
+,p_sequence=>8
+,p_column_type=>'DATA'
+,p_data_type=>'VARCHAR2'
+,p_max_length=>4000
+,p_selector_type=>'NAME'
+,p_selector=>'FILIERE_ETUDIANT'
+);
+wwv_flow_api.create_load_table(
+ p_id=>wwv_flow_api.id(40296502031531791397)
+,p_name=>'ETUDIANTS_2A_XLSX'
+,p_static_id=>'ETUDIANTS_2A_XLSX'
+,p_target_type=>'TABLE'
+,p_table_name=>'ETUDIANT_FICHIER'
+,p_data_profile_id=>wwv_flow_api.id(40296499491121791350)
+,p_loading_method=>'APPEND'
+,p_commit_interval=>200
+,p_error_handling=>'ABORT'
+,p_skip_validation=>'N'
+);
+wwv_flow_api.component_end;
+end;
+/
